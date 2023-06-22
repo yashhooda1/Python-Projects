@@ -1,0 +1,44 @@
+#Author: Yash Hooda
+#Date Created: 01/27/2023
+#Project Name: Gradebook
+#The purpose of the project is to use arrays in python to organize subjects and grades using Python in a standard gradebook.
+
+#last semester grades
+last_semester_gradebook = [["politics", 80], ["latin", 96], ["dance", 97], ["architecture", 65]]
+ 
+#list subjects
+subjects = ["physics", "calculus", "poetry", "history"]
+
+#list grades
+grades = [98, 97, 85, 88]
+
+#create 2d array of current grades
+gradebook = [["physics", 98], ["calculus", 97], ["poetry", 85], ["history", 88]]
+
+#print current grades before making changes
+print(gradebook)
+
+#skip line
+print(" ")
+
+#add computer science grade
+gradebook.append(["computer science", 100])
+
+#add visual arts grade
+gradebook.append(["visual arts", 93])
+
+#modify visual arts grade to 5 points greater
+gradebook[5][1] = 98
+
+#switch to pass/fail grade option for poetry class
+gradebook[2].remove(85)
+gradebook[2].append("Pass")
+
+#print grades after modification
+print(gradebook)
+print(" ")
+
+#combine grades from last semester and this semester to print full gradebook
+full_gradebook = last_semester_gradebook + gradebook
+print(full_gradebook)
+

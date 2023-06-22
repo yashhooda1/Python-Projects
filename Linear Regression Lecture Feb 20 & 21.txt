@@ -1,0 +1,40 @@
+1. > By looking at the values, note that house sizes are about 1000 times the number of bedrooms. When features differ by orders of magnitude, first performing feature scaling can make gradient descent converge much more quickly.
+
+2. 
+
+We can speed up gradient descent by having each of our input values in roughly the same range, ideally $-1 \leq x_i \leq1$ or $-0.5 \leq x_i \leq0.5$.
+
+* Feature scaling: involves dividing the input values by the range (i.e. the maximum value minus the minimum value) of the input variable
+* Mean normalization: involves subtracting the average value for an input variable from the values for that input variable
+
+$x_i := \frac{x_i - \mu_i}{s_i}$, wher $\mu_i$ is the average of all the values for features (i) and $s_i$ is the range of values (max-min), the standard deviation.
+
+3. 
+### 1.2 Gradient Descent
+
+Fit the linear regression parameters $\theta$ to the dataset using gradient descent. Gradient descent is a generic optimization algorithm that measures the local gradient of the cost function with regards to the parameter $\theta$ and goes in the direction of descending gradient.
+
+The hypothesis of linear regression is:
+
+$$ h_\theta(x) = \theta^Tx = \theta_0 + \theta_1x_1$$
+
+The objective of linear regression is to minimize the cost function (Root Mean Square Error RMSE):
+
+$$ J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 $$
+
+To minimize the cost of $J(\theta)$ we will use the batch gradient descent algorithm. In batch gradient descent, each iteration performs the update
+
+Algorithm:
+
+repeat until convergence:
+$$\theta_j := \theta_j - \alpha \frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1) = \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} $$ 
+
+where $j=0,1$; $\alpha$ is the learning rate (the steps to update J); $\frac{\partial}{\partial\theta_j}J(\theta_0, \theta_1)$ is a derivative.
+
+* Learning rate to small: slow gradient descent
+* Learning rate to large: gradient descent can overshoot the minimum, may fail to converge
+
+4.
+Tips:
+* Make a plot with number of iterations on the x-axis. Now plot the cost function, $J(\theta)$ over the number of iterations of gradient descent. If $J(\theta)$  ever increases, then you probably need to decrease $\alpha$.
+* Declare convergence if $J(\theta)$ decreases by less than E in one iteration, where E is some small value such as $10^{âˆ’3}$.
